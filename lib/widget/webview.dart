@@ -7,12 +7,12 @@ const CATCH_URLS = ['m.ctrip.com/', 'm.ctrip.com/html5/', 'm.ctrip.com/html5/'];
 
 class WebView extends StatefulWidget{
   final String url;
-  final String statusBarColor;
-  final String title;
-  final bool hideAppBar;
+  final String? statusBarColor;
+  final String? title;
+  final bool? hideAppBar;
   final bool backForbid;
 
-  WebView({required this.url, required this.statusBarColor, required this.title, required this.hideAppBar, this.backForbid=false});
+  WebView({required this.url, this.statusBarColor, this.title, this.hideAppBar, this.backForbid=false});
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -75,7 +75,7 @@ class _WebViewState extends State<WebView>{
 
   @override
   Widget build(BuildContext context) {
-    String statusBarColorStr = widget.statusBarColor != null ? widget.statusBarColor : 'ffffff';
+    String statusBarColorStr = widget.statusBarColor ?? 'ffffff';
     Color backButtonColor;
     if (statusBarColorStr == 'ffffff') {
       backButtonColor = Colors.black;
@@ -107,7 +107,7 @@ print(statusBarColorStr);
   }
 
   _appBar(Color backgroundColor, Color backButtonColor){
-    if (widget.hideAppBar != null && widget.hideAppBar) {
+    if (widget.hideAppBar != null) {
       return Container(
         color: backgroundColor,
         height: 30,
@@ -134,7 +134,7 @@ print(statusBarColorStr);
               left:0,
               right:0,
               child: Center(
-                child: Text(widget.title, style: TextStyle(
+                child: Text(widget.title??'Title', style: TextStyle(
                   color: backgroundColor,
                   fontSize: 20,
                 )),
