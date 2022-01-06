@@ -1,4 +1,5 @@
 class SearchModel{
+  String? keyword;
   final List<SearchItem>? data;
 
   SearchModel({this.data});

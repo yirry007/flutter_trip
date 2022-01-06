@@ -8,6 +8,7 @@ import 'package:flutter_trip/model/common_model.dart';
 import 'package:flutter_trip/model/grid_nav_model.dart';
 import 'package:flutter_trip/model/home_model.dart';
 import 'package:flutter_trip/model/sales_box_model.dart';
+import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/widget/grid_nav.dart';
 import 'package:flutter_trip/widget/local_nav.dart';
 import 'package:flutter_trip/widget/sales_box.dart';
@@ -17,7 +18,7 @@ import 'package:flutter_trip/widget/loading_container.dart';
 import 'package:flutter_trip/widget/webview.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
-const SEARCH_BAR_DEFAULT_TEXT = 'SEARCH_BAR_DEFAULT_TEXT';
+const SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 
 class HomePage extends StatefulWidget{
   @override
@@ -190,7 +191,11 @@ class _HomePageState extends State<HomePage>{
     );
   }
 
-  _jumpToSearch(){}
+  _jumpToSearch(){
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context)=>SearchPage(hint: SEARCH_BAR_DEFAULT_TEXT),
+    ));
+  }
 
   _jumpToSpeak(){}
 
